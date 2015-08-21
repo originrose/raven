@@ -1,0 +1,53 @@
+.notify-wrapper {
+  position: fixed;
+  padding-right: 10px;
+  top: 50px;
+  right: 0px;
+  z-index: 10000;
+}
+
+.notify-wrapper .notification {
+  width: 225px;
+  border: 2px solid lightgrey;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.15);
+  font-size: 13px;
+  border-radius: 5px;
+  text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
+  background: #f0f0f0;
+  color: white;
+  opacity: 0.8;
+}
+
+.notify-wrapper .notification.success {
+  background-color: #51a351;
+}
+
+.notify-wrapper .notification.warning {
+  background-color: #f89406;
+}
+
+.notify-wrapper .notification.error {
+  background-color: #bd362f;
+}
+
+.notify-wrapper .notification.info {
+  background-color: #2f96b4;
+}
+
+.notify-wrapper .notification:hover {
+  opacity: 1;
+  text-shadow: none;
+}
+
+.notify-wrapper .notification a.remove {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  color: #c8c8c8;
+}
+
+.notify-wrapper .notification a.remove:hover {
+  color: grey;
+}
