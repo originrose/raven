@@ -1,8 +1,7 @@
 (defproject thinktopic/raven "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://www.github.com/ThinkTopic/raven"
-  :license {:name "Super Secret ThinkTopic License"
-            :url "http://thinktopic.com"}
+  :description "A simple notifications library using reagent."
+  :url "http://www.github.com/thinktopic/raven"
+  :license "Eclipse License"
 
   :source-paths ["src/clj" "src/cljs"]
 
