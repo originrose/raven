@@ -48,8 +48,7 @@
   :profiles {:dev {:repl-options {:init-ns user
                                   :nrepl-middleware []}
 
-                   :dependencies [
-                                  [environ "1.0.0"]
+                   :dependencies [[environ "1.0.0"]
                                   [ring-server "0.4.0"]
                                   [ring "1.3.2"]
                                   [ring/ring-defaults "0.1.5"]
@@ -87,8 +86,8 @@
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
                                               :compiler {:main "raven.dev"
                                                          :source-map true}}
-}
-}}
+                                        }
+                               }}
 
              :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
