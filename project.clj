@@ -5,7 +5,8 @@
 
   :source-paths ["src/clj" "src/cljs"]
 
-  :dependencies [[org.clojure/clojurescript "1.7.48" :scope "provided"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
+                 [org.clojure/clojurescript "1.7.48" :scope "provided"]
                  [cljsjs/react "0.13.3-0"]
                  [reagent "0.5.0"]
                  [garden "1.2.5"]]
@@ -47,7 +48,7 @@
   :profiles {:dev {:repl-options {:init-ns user
                                   :nrepl-middleware []}
 
-                   :dependencies [[org.clojure/clojure "1.7.0"]
+                   :dependencies [
                                   [environ "1.0.0"]
                                   [ring-server "0.4.0"]
                                   [ring "1.3.2"]
