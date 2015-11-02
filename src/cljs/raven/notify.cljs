@@ -2,7 +2,6 @@
   (:require [reagent.core :as reagent :refer [atom]]))
 
 
-
 (defonce pending-notifications* (atom []))
 
 
@@ -31,7 +30,7 @@
       (fn [this]
         (let [node (.getDOMNode this)]
           (swap! state* assoc :node node)
-          (remove-notification state* m 5000)))
+          (remove-notification state* m (:delay m))))
       :reagent-render
       (fn [m]
         [:div.notification.animated {:class (str (name (:type m)) " "
@@ -43,7 +42,7 @@
                                         (.stopPropagation ev))}
          (when (:title m)
            [:h3 (:title m)])
-         [:p (:message m)]])})))
+         [:pre (:message m)]])})))
 
 
 (defn notifications

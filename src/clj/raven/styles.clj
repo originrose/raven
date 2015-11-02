@@ -4,18 +4,17 @@
             [garden.color :as color :refer [hsl rgb rgba]]))
 
 (defstyles raven-styles
-  [[:.notify-wrapper {:position :fixed
+  [[:.notify-wrapper {:max-width "33%"
+                      :position :fixed
                       :padding-right (px 10)
                       :top (px 50)
-                      :right (px 0)
+                      :right (px 25)
                       :z-index 10000}
 
     [:.notification {:border "2px solid lightgrey"
                      :font-size (px 13)
-                     :width (px 225)
                      :background (rgb 240 240 240)
-                     :padding [[(px 0) (px 10)]]
-                     :margin-bottom (px 10)
+                     :padding (px 10)
                      :box-shadow "0px 0px 6px rgba(0,0,0,0.15)"
                      :color :white
                      :text-shadow "0px 0px 3px rgba(255, 255, 255, 0.5)"
