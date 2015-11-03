@@ -1,7 +1,9 @@
-(defproject thinktopic/raven "0.1.1-SNAPSHOT"
+(defproject thinktopic/raven "0.1.1"
   :description "A simple notifications library using reagent."
   :url "http://www.github.com/thinktopic/raven"
   :license "Eclipse License"
+  :scm {:name "git"
+        :url "https://github.com/thinktopic/raven"}
 
   :source-paths ["src/clj" "src/cljs"]
 
