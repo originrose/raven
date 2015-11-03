@@ -13,8 +13,7 @@
 
   :plugins [[lein-environ "1.0.0"]
             [lein-asset-minifier "0.2.2"]
-            [lein-garden "0.2.6"]
-            [s3-wagon-private "1.1.2"]]
+            [lein-garden "0.2.6"]]
 
   :garden {:builds [{:id "dev"
                      :pretty-print? true
@@ -85,9 +84,7 @@
 
                    :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
                                               :compiler {:main "raven.dev"
-                                                         :source-map true}}
-                                        }
-                               }}
+                                                         :source-map true}}}}}
 
              :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
                        :env {:production true}
@@ -98,11 +95,4 @@
                                             {:source-paths ["env/prod/cljs"]
                                              :compiler
                                              {:optimizations :advanced
-                                              :pretty-print false}}}}}}
-
-  :repositories  {"snapshots"  {:url "s3p://thinktopic.jars/snapshots/"
-                                :passphrase :env
-                                :username :env}
-                  "releases"  {:url "s3p://thinktopic.jars/releases/"
-                               :passphrase :env
-                               :username :env}})
+                                              :pretty-print false}}}}}})
