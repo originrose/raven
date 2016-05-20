@@ -1,4 +1,4 @@
-(defproject thinktopic/raven "0.1.1"
+(defproject thinktopic/raven "0.1.2-SNAPSHOT"
   :description "A simple notifications library using reagent."
   :url "http://www.github.com/thinktopic/raven"
   :license "Eclipse License"
@@ -7,14 +7,7 @@
 
   :source-paths ["src/clj" "src/cljs"]
 
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.48" :scope "provided"]
-                 [cljsjs/react "0.13.3-0"]
-                 [reagent "0.5.0"]
-                 [garden "1.2.5"]]
-
   :plugins [[lein-environ "1.0.0"]
-            [lein-asset-minifier "0.2.2"]
             [lein-garden "0.2.6"]]
 
   :garden {:builds [{:id "dev"
@@ -24,32 +17,34 @@
                      :compiler {:output-to "resources/public/css/raven.css"
                                 :pretty-print? true}}]}
 
-  :ring {:handler raven.handler/app
-         :uberwar-name "raven.war"}
-
   :min-lein-version "2.5.0"
-
-  :uberjar-name "raven.jar"
 
   :clean-targets ^{:protect false} [:target-path
                                     [:cljsbuild :builds :app :compiler :output-dir]
                                     [:cljsbuild :builds :app :compiler :output-to]]
 
-  :minify-assets
-  {:assets
-    {"resources/public/css/site.min.css" "resources/public/css/site.css"}}
+  :profiles {:provided {:dependencies [[org.clojure/clojurescript "1.7.48"]
+                                       [reagent "0.5.0"]]}
 
-  :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
-                             :compiler {:output-to     "resources/public/js/app.js"
-                                        :output-dir    "resources/public/js/out"
-                                        :asset-path   "js/out"
-                                        :optimizations :none
-                                        :pretty-print  true}}}}
-
-  :profiles {:dev {:repl-options {:init-ns user
+             :dev {:repl-options {:init-ns user
                                   :nrepl-middleware []}
 
-                   :dependencies [[environ "1.0.0"]
+                   :ring {:handler raven.handler/app
+                          :uberwar-name "raven.war"}
+
+                   :cljsbuild {:builds {:app {:source-paths ["src/cljs" "env/dev/cljs"]
+                                              :compiler {:output-to "resources/public/js/app.js"
+                                                         :output-dir "resources/public/js/out"
+                                                         :asset-path "js/out"
+                                                         :optimizations :none
+                                                         :pretty-print true
+                                                         :main "raven.dev"
+                                                         :source-map true}}}}
+
+                   :dependencies [[garden "1.2.5"]
+                                  [cljsjs/react "0.13.3-0"]
+                                  [org.clojure/clojure "1.7.0"]
+                                  [environ "1.0.0"]
                                   [ring-server "0.4.0"]
                                   [ring "1.3.2"]
                                   [ring/ring-defaults "0.1.5"]
@@ -82,19 +77,4 @@
                               :css-dirs ["resources/public/css"]
                               :ring-handler handler/app}
 
-                   :env {:dev true}
-
-                   :cljsbuild {:builds {:app {:source-paths ["env/dev/cljs"]
-                                              :compiler {:main "raven.dev"
-                                                         :source-map true}}}}}
-
-             :uberjar {:hooks [leiningen.cljsbuild minify-assets.plugin/hooks]
-                       :env {:production true}
-                       :aot :all
-                       :omit-source true
-                       :cljsbuild {:jar true
-                                   :builds {:app
-                                            {:source-paths ["env/prod/cljs"]
-                                             :compiler
-                                             {:optimizations :advanced
-                                              :pretty-print false}}}}}})
+                   :env {:dev true}}})
