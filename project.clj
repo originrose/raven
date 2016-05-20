@@ -1,4 +1,4 @@
-(defproject thinktopic/raven "0.1.2-SNAPSHOT"
+(defproject thinktopic/raven "0.1.2"
   :description "A simple notifications library using reagent."
   :url "http://www.github.com/thinktopic/raven"
   :license "Eclipse License"
