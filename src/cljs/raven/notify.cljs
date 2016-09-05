@@ -28,7 +28,7 @@
     (reagent/create-class
      {:component-did-mount
       (fn [this]
-        (let [node (.getDOMNode this)]
+        (let [node (reagent/dom-node this)]
           (swap! state* assoc :node node)
           (remove-notification state* m (:delay m))))
       :reagent-render
