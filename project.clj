@@ -77,4 +77,5 @@
                               :css-dirs ["resources/public/css"]
                               :ring-handler handler/app}
 
-                   :env {:dev true}}})
+                   :env {:dev true}}}
+  :think/meta {:type #{:library})
