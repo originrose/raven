@@ -79,4 +79,4 @@
 
                    :env {:dev true}}}
   :think/meta {:type :library
-               :tags [:ui}})
+               :tags [:ui]})
