@@ -78,4 +78,5 @@
                               :ring-handler handler/app}
 
                    :env {:dev true}}}
-  :think/meta {:type #{:library})
+  :think/meta {:type :library
+               :tags [:ui}})
